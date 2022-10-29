@@ -32,31 +32,34 @@ include $(TOP_DIR)/$(MICROPYTHON_CORE)/$(MICROPYTHON_CORE).mk
 # $(call micropython/prereq)
 
 all: prereq $(MICROPYTHON_CORE) extmod
+	$(LOG_LEVEL)echo "_-_ $(TARGET)/prereq"
 	$(call $(TARGET)/prereq)
+	$(LOG_LEVEL)echo "_-_ $(TARGET)/compile"
 	$(call $(TARGET)/compile)
+	$(LOG_LEVEL)echo "_-_ $(TARGET)/install"
 	$(call $(TARGET)/install)
 
 .PHONY: micropython
 micropython:
-	$(LOG_LEVEL)echo "Prepare micropython source code ..."
+	$(LOG_LEVEL)echo "_-_Prepare micropython source code ..."
 	$(call micropython/prereq)
-	$(LOG_LEVEL)echo "Prepare micropython source code ... ok"
+	$(LOG_LEVEL)echo "_-_Prepare micropython source code ... ok"
 
 .PHONY: circuitpython
 circuitpython:
-	$(LOG_LEVEL)echo "Prepare circuitpython source code ..."
+	$(LOG_LEVEL)echo "_-_Prepare circuitpython source code ..."
 	$(call circuitpython/prereq)
-	$(LOG_LEVEL)echo "Prepare circuitpython source code ... ok"
+	$(LOG_LEVEL)echo "_-_Prepare circuitpython source code ... ok"
 
 .PHONY: extmod
 extmod:
-	$(LOG_LEVEL)echo "Prepare expansion module ..."
+	$(LOG_LEVEL)echo "_-_Prepare expansion module ..."
 	$(foreach var, $(shell find extmod -name Makefile), make -C $(shell dirname $(var));)
-	$(LOG_LEVEL)echo "Prepare expansion module ... ok"
+	$(LOG_LEVEL)echo "_-_Prepare expansion module ... ok"
 
 .PHONY: prereq
 prereq:
-	$(LOG_LEVEL)echo "Prepare working directory ..."
+	$(LOG_LEVEL)echo "_-_Prepare working directory ..."
 	$(LOG_LEVEL)if [ ! -d $(TMP_DIR) ]; then \
 		mkdir -p $(TMP_DIR); \
 	fi
@@ -69,7 +72,7 @@ prereq:
 	$(LOG_LEVEL)if [ ! -d $(BIN_DIR) ]; then \
 		mkdir -p $(BIN_DIR); \
 	fi
-	$(LOG_LEVEL)echo "Prepare working directory ... ok"
+	$(LOG_LEVEL)echo "_-_Prepare working directory ... ok"
 
 
 .PHONY: clean
