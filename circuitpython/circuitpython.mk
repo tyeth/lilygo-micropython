@@ -6,8 +6,8 @@ define circuitpython/info
 	PKG_NAME:=circuitpython
 	PKG_SOURCE_URL:=https://github.com/adafruit/circuitpython.git
 	PKG_SOURCE_PROTO:=git
-	PKG_SOURCE_VERSION:=7.3.1
-	PKG_SOURCE_MD5:=639c7fcbe62a8252cf9367147d94c150
+	PKG_SOURCE_VERSION:=8.0.0-beta.3
+	PKG_SOURCE_MD5:=9c8e6a8698f0fbce48ca3f864c9cf38b3905c2da
 	# PKG_SOURCE_OPT:=--recurse-submodules --depth=1
 endef
 
