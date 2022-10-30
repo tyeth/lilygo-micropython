@@ -2,7 +2,7 @@ Index: micropython/ports/esp32/main/CMakeLists.txt
 ===================================================================
 --- micropython.orig/ports/esp32/main/CMakeLists.txt
 +++ micropython/ports/esp32/main/CMakeLists.txt
-@@ -126,6 +126,13 @@ set(IDF_COMPONENTS
+@@ -126,6 +126,18 @@ set(IDF_COMPONENTS
      xtensa
  )
  
@@ -12,6 +12,11 @@ Index: micropython/ports/esp32/main/CMakeLists.txt
 +    list(APPEND IDF_COMPONENTS esp_lcd)
 +endif()
 +
++
++if(MICROPY_BOARD STREQUAL "LILYGO_T-DisplayS3")
++    list(APPEND IDF_COMPONENTS lvgl)
++    list(APPEND IDF_COMPONENTS lvgl/lvgl_esp32_drivers)
++endif()
 +
  if(IDF_VERSION_MINOR GREATER_EQUAL 1 OR IDF_VERSION_MAJOR GREATER_EQUAL 5)
      list(APPEND IDF_COMPONENTS esp_netif)
